@@ -12,14 +12,12 @@ public class WebController {
         return "index";
     }
 
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('USER') || hasRole('ADMIN')")
-    public String user() {
-        return "user";
+    @GetMapping("/error")
+    public String error() {
+        return "error";
     }
 
     @GetMapping("/admin")
-    @PreAuthorize("hasRole('ADMIN')")
     public String admin() {
         return "admin";
     }
