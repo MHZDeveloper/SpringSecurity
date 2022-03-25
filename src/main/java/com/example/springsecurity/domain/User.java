@@ -2,9 +2,7 @@ package com.example.springsecurity.domain;
 
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -17,7 +15,8 @@ public class User {
 
     private String password;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public User() {
     }
@@ -27,7 +26,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -57,11 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

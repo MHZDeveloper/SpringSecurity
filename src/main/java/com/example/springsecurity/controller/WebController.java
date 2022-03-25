@@ -18,7 +18,14 @@ public class WebController {
     }
 
     @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public String admin() {
         return "admin";
+    }
+
+    @GetMapping("/user")
+    @PreAuthorize("hasRole('ADMIN') || hasRole('USER')")
+    public String user() {
+        return "user";
     }
 }
